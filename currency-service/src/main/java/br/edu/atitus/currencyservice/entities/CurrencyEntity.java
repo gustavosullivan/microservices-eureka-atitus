@@ -1,11 +1,9 @@
 package br.edu.atitus.currencyservice.entities;
 
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="tb_currency")
-
+@Table(name = "tb_currency")
 public class CurrencyEntity {
 
     @Id
@@ -14,10 +12,8 @@ public class CurrencyEntity {
 
     @Column(name = "source_currency")
     private String sourceCurrency;
-
     @Column(name = "target_currency")
     private String targetCurrency;
-
     @Column(name = "conversion_rate")
     private Double conversionRate;
 

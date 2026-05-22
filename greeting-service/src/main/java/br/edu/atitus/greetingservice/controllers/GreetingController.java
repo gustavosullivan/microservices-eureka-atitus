@@ -1,7 +1,7 @@
 package br.edu.atitus.greetingservice.controllers;
 
 import br.edu.atitus.greetingservice.configs.GreetingConfig;
-import br.edu.atitus.greetingservice.dtos.GreetingRecordDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,25 +14,16 @@ public class GreetingController {
         this.config = config;
     }
 
-    @GetMapping({"", "/","/{name}"})
-    public String getGreeting(@RequestParam(required = false) String name,
-                              @PathVariable(name = "name",required = false) String namePath) {
+    @GetMapping({"", "/", "/{namePath}"})
+    public ResponseEntity<String> getGreeting(
+            @RequestParam(required = false) String name,
+            @PathVariable(required = false) String namePath
+    ) {
+        if (name == null) {
+            name = namePath != null ? namePath : config.getDefaultName();
+        }
 
-        String finalName = name != null ? name : namePath;
-
-        String greetingReturn = String.format("%s %s!!!", config.getGreeting(),finalName = finalName != null ? finalName : config.getDefaultName());
-        return greetingReturn;
-
-    }
-
-    @PostMapping
-    public String postGreeting(@RequestBody GreetingRecordDto greetingRecordDto) {
-
-        String name = greetingRecordDto.name();
-        if (name.isBlank())
-            name = config.getDefaultName();
-
-        String greetingReturn = String.format("%s %s!!!", config.getGreeting(),name);
-        return greetingReturn;
+        String retorno = String.format("%s %s!!!", config.getGreeting(), name);
+        return ResponseEntity.ok(retorno);
     }
 }

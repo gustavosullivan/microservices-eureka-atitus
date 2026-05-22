@@ -1,6 +1,4 @@
 package br.edu.atitus.productservice.entities;
-import br.edu.atitus.productservice.entities.ProductEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import jakarta.persistence.*;
 
@@ -12,22 +10,11 @@ public class ProductEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "brand")
     private String brand;
-
-    @Column(name = "model")
     private String model;
-
-    @Column(name = "currency")
     private String currency;
-
-    @Column(name = "price")
     private Double price;
-
-    @Column(name = "stock")
     private Integer stock;
 
     public Long getId() {

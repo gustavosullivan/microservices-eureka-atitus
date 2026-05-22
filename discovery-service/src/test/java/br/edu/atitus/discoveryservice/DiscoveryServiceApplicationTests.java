@@ -1,10 +1,10 @@
-package br.edu.atitus.productservice;
+package br.edu.atitus.discoveryservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductServiceApplicationTests {
+class DiscoveryServiceApplicationTests {
 
     @Test
     void contextLoads() {
